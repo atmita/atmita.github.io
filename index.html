@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Product App</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />
+
+        <!--<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>-->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+        <style>
+
+            html {   
+    background: #d0cec9;   
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#dedcd9', endColorstr='#f7f7f6');   
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #dedcd9),      
+    color-stop(0.1, #f7f7f6), color-stop(1.0, #f7f7f6));   
+    background: -moz-linear-gradient(top, #dedcd9 0px, #f7f7f6 400px, #f7f7f6 100%);   
+}   
+body   
+{   
+    background: url(../images/noise.png);   
+}  
+
+        </style>
+    </head>
+    <body>
+
+
+<div id="app-4">
+<h1> {{ name + " " + Title }}</h1>
+
+  <ol>
+    <li v-for="(project, index) in projects">
+      {{ project.text }}
+      {{project.description}}
+      <div><i class="fas fa-heart" @click="likeproject(index,$event)">likes: {{project.likes}} </i> </div>
+      {{project.language[1]}}
+    </li>s
+  </ol>
+</div>
+             
+     <script src="main3.js"></script>
+
+    </body>  
+
+</html>
