@@ -5,7 +5,6 @@
 
 }*/
 
-
 var app4 = new Vue({
   el: '#app-4',
   data: {
@@ -18,11 +17,62 @@ var app4 = new Vue({
     ]
   },
   methods: {
-    likeproject(index) {
-      const project = this.projects[index];
-      console.log("clicked", index);
-      project.likes++;
-    }
+    addLike(project)
+  {
 
+      const projectTitle = project.text;
+      if (!localStorage.getItem(projectTitle)) 
+      {
+      project.likes++;
+      localStorage.setItem(projectTitle, true);
+      }
+  },
+    removeLike(project)
+  {
+      const projectTitle = project.text;
+      console.log(project, "dislike");
+      if(project.likes > 0 && Boolean(localStorage.getItem(projectTitle))) { 
+    project.likes--;
+    localStorage.removeItem(projectTitle);  
+    }
+   } 
+  },
+  mounted() {
+    this.projects.forEach(project => {
+      if(localStorage.getItem(project.text) !== null)
+    { project.likes = 1;
+    }
+  });
   }
+});
+
+
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelectorAll('.nav__link')
+
+navToggle.addEventListener('click', () => {
+    document.body.classList.toggle('nav-open');
+});
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        document.body.classList.remove('nav-open');
+    })
 })
+
+
+//menu toggle
+(function($){
+    $('.nav-toggle').click(function(e){
+        e.preventDefault();
+        $('.nav-toggle').toggleClass('active');
+        $('.nav-menu').toggleClass('active');
+        $('.nav-overlay').toggleClass('active');
+    })
+    $('.nav-overlay').click(function(e){
+        e.preventDefault();
+        $('.nav-toggle').toggleClass('active');
+        $('.nav-menu').toggleClass('active');
+        $('.nav-overlay').toggleClass('active');
+    })
+})(jQuery);
