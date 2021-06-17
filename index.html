@@ -15,42 +15,47 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" integrity="sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=" crossorigin="anonymous" />  
 
      <link rel="stylesheet" type="text/css" href="style.css">
+     
         <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
         </head>
     <body>
 
       <header>
         <div class="logo">
-          <img src= "img/logo.png" alt="atma-billar" border="0" class="logo">
+          <img src= "img/logo.jpg" alt="atma-billar" border="0" class="logo">
         </div>
         <button class="nav-toggle" aria-label="toggle-navigation">
           <span class="hamburger"></span>
         </button> 
           <nav class="nav">
             <ul class="nav__list">
-              <li class="nav__item"><a href=#home class="nav__link">Inicio</a></li>
-              <li class="nav__item"><a href=#services class="nav__link">My Service</a></li>
+              <li class="nav__item"><a href="index.html" class="nav__link">Inicio</a></li>
+              <li class="nav__item"><a href="projects.html" class="nav__link">Proyectos</a></li>
               <li class="nav__item"><a href=#about class="nav__link">About me</a></li>
               <li class="nav__item"><a href=#work class="nav__link">My work</a></li>
             </ul>
           </nav>
       </header>
 
-<input type="text">
 
 <div id="app-4">
-
-
-<h1> {{ name + " " + Title }}</h1>
-
-  <ol>
-    <li v-for="(project, index) in projects">
+<section class="intro">  
+  <h1 class="section__title--intro section__title">  {{ name }} </h1> 
+  <h2 class="section__subtitle section__subtitle--intro">  {{ Title }} </h2>
+</section>
+<div id="app-4">
+  <ul>
+    <li v-for="project in projects">
       {{ project.text }}
       {{project.description}}
-      <div><i class="fas fa-heart" @click="likeproject(index,$event)">likes: {{project.likes}} </i> </div>
+      <div>
+          <i class="fas fa-heart" @click.left="addLike(project)" @click.right="removeLike(project, $event)">
+           likes: {{project.likes}} 
+          </i>
+      </div>
       {{project.language[1]}}
-    </li>s
-  </ol>
+    </li>
+  </ul>
 </div>
              
      <script src="main.js"></script>
