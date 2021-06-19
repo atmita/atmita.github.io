@@ -1,78 +1,20 @@
-//vue js goes here
-
-/*let dataObject = {
-
-
-}*/
-
-var app4 = new Vue({
-  el: '#app-4',
-  data: {
-    name: "Omar Cruz",
-    Title: "portafolio web",
-    projects: [
-      { likes: 1, text: 'Learn JavaScript', description: "proyecto web", language:["html", "css", "javascript"] },
-      { likes: 2, text: 'Learn Vue', description: "proyecto ecommerce", language:["html", "css", "vue"] },
-      { likes: 3, text: 'Build something awesome', description: "proyecto wordpress", language:["html", "css", "Php"] }
-    ]
-  },
-  methods: {
-    addLike(project)
-  {
-
-      const projectTitle = project.text;
-      if (!localStorage.getItem(projectTitle)) 
-      {
-      project.likes++;
-      localStorage.setItem(projectTitle, true);
-      }
-  },
-    removeLike(project)
-  {
-      const projectTitle = project.text;
-      console.log(project, "dislike");
-      if(project.likes > 0 && Boolean(localStorage.getItem(projectTitle))) { 
-    project.likes--;
-    localStorage.removeItem(projectTitle);  
-    }
-   } 
-  },
-  mounted() {
-    this.projects.forEach(project => {
-      if(localStorage.getItem(project.text) !== null)
-    { project.likes = 1;
-    }
-  });
-  }
+var typed = new Typed('.typed', {
+  strings: [
+    '<i class="mascota">Proyectos Web</i>',
+    '<i class="mascota">Aplicaciones moviles</i>',
+    '<i class="mascota">Webmaster</i>',
+    '<i class="mascota">Diseño web</i>',
+  ],
+  stringsElement: '#cadenas-texto', // ID del elemento que contiene cadenas de texto a mostrar.
+  typeSpeed: 75, // Velocidad en mlisegundos para poner una letra,
+  startDelay: 300, // Tiempo de retraso en iniciar la animacion. Aplica tambien cuando termina y vuelve a iniciar,
+  backSpeed: 75, // Velocidad en milisegundos para borrrar una letra,
+  smartBackspace: true, // Eliminar solamente las palabras que sean nuevas en una cadena de texto.
+  shuffle: false, // Alterar el orden en el que escribe las palabras.
+  backDelay: 1500, // Tiempo de espera despues de que termina de escribir una palabra.
+  loop: true, // Repetir el array de strings
+  loopCount: false, // Cantidad de veces a repetir el array.  false = infinite
+  showCursor: true, // Mostrar cursor palpitanto
+  cursorChar: '/', // Caracter para el cursor
+  contentType: 'html', // 'html' o 'null' para texto sin formato
 });
-
-
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelectorAll('.nav__link')
-
-navToggle.addEventListener('click', () => {
-    document.body.classList.toggle('nav-open');
-});
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        document.body.classList.remove('nav-open');
-    })
-})
-
-
-//menu toggle
-(function($){
-    $('.nav-toggle').click(function(e){
-        e.preventDefault();
-        $('.nav-toggle').toggleClass('active');
-        $('.nav-menu').toggleClass('active');
-        $('.nav-overlay').toggleClass('active');
-    })
-    $('.nav-overlay').click(function(e){
-        e.preventDefault();
-        $('.nav-toggle').toggleClass('active');
-        $('.nav-menu').toggleClass('active');
-        $('.nav-overlay').toggleClass('active');
-    })
-})(jQuery);
